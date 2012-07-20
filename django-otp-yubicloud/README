@@ -1,0 +1,8 @@
+.. vim:ft=rst
+
+This is a django-otp plugin that verifies tokens against a `YubiCloud
+<http://www.yubico.com/yubicloud>`_ service. It defaults to Yubico's hosted web
+service, but can be directed anywhere.
+
+See `django-otp <http://pypi.python.org/pypi/django-otp>`_ for more information
+on the OTP framework.

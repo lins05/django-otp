@@ -1,0 +1,7 @@
+.. vim:ft=rst
+
+This is a django-otp plugin that delivers tokens via Amazon's `SNS
+<http://aws.amazon.com/sns/>`_.
+
+See `django-otp <http://pypi.python.org/pypi/django-otp>`_ for more information
+on the OTP framework.
