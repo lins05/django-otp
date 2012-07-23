@@ -1,6 +1,0 @@
-.. vim:ft=rst
-
-This is a django-otp plugin that handles generic HOTP and TOTP devices.
-
-See `django-otp <http://packages.python.org/django-otp>`_ for more information
-on the OTP framework.

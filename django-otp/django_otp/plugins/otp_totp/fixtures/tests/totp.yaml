@@ -14,16 +14,7 @@
   model: auth.user
   pk: 1
 
-- model: otp_oath.hotpdevice
-  pk: 1
-  fields:
-    user: 1
-    key: 'd2e8a68036f68960b1c30532bb6c56da5934d879'
-    digits: 6
-    drift: 1
-    counter: 0
-
-- model: otp_oath.totpdevice
+- model: otp_totp.totpdevice
   pk: 1
   fields:
     user: 1
@@ -31,4 +22,5 @@
     step: 30
     t0: 0
     digits: 6
-    drift: 1
+    tolerance: 0
+    drift: 0
