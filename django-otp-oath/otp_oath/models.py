@@ -15,19 +15,19 @@ class HOTPDevice(Device):
 
     .. attribute:: key
 
-        A hex-encoded secret key of up to 40 bytes.
+        A hex-encoded secret key of up to 40 bytes. (Default: 20 random bytes)
 
-    .. atribute:: digits
+    .. attribute:: digits
 
-        The number of digits to expect from the token generator.
+        The number of digits to expect from the token generator. (Default: 6)
 
     .. attribute:: drift
 
-        The amount of counter drift to tolerate.
+        The amount of counter drift to tolerate. (Default: 3)
 
-    .. attribute: counter
+    .. attribute:: counter
 
-        The next counter value to expect.
+        The next counter value to expect. (Initial: 0)
     """
     key = models.CharField(max_length=80, validators=[hex_validator()], default=lambda: random_hex(20), help_text=u"A hex-encoded secret key of up to 40 bytes.")
     digits = models.PositiveSmallIntegerField(choices=[(6,6), (8,8)], default=6, help_text=u"The number of digits to expect in a token.")
@@ -66,23 +66,23 @@ class TOTPDevice(Device):
 
     .. attribute:: key
 
-        A hex-encoded secret key of up to 40 bytes.
+        A hex-encoded secret key of up to 40 bytes. (Default: 20 random bytes)
 
     .. attribute:: step
 
-        The time step in seconds.
+        The time step in seconds. (Default: 30)
 
     .. attribute:: t0
 
-        The UNIX time at which to begin counting steps.
+        The UNIX time at which to begin counting steps. (Default: 0)
 
     .. attribute:: digits
 
-        The number of digits to expect in a token.
+        The number of digits to expect in a token. (Default: 6)
 
     .. attribute:: drift
 
-        The number of time steps in the past to allow.
+        The number of time steps in the past to allow. (Default: 1)
     """
     key = models.CharField(max_length=80, validators=[hex_validator()], default=lambda: random_hex(20), help_text=u"A hex-encoded secret key of up to 40 bytes.")
     step = models.PositiveSmallIntegerField(default=30, help_text=u"The time step in seconds.")
