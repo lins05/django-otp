@@ -1,6 +1,11 @@
+# distutils
 /MANIFEST$
 /dist/
 docs/build/
+
+# vim
 \.spell\..*\.add\..*
+
+# Django
 .*\.sqlite
 /settings_local.py$
