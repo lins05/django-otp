@@ -101,7 +101,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'otp.urls'
+ROOT_URLCONF = 'django-otp-demo.urls'
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
@@ -120,8 +120,9 @@ INSTALLED_APPS = [
     'django.contrib.admindocs',
 
     'django_otp',
-    'django_otp.plugins.otp_static',
+    'otp_yubikey',
     'django_otp.plugins.otp_email',
+    'django_otp.plugins.otp_static',
 ]
 
 # A sample logging configuration. The only tangible logging
@@ -157,6 +158,4 @@ LOGGING = {
 }
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-
-OTP_EMAIL_SENDER = 'psagers@ignorare.net'
+from settings_local import *

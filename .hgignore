@@ -3,3 +3,4 @@
 docs/build/
 \.spell\..*\.add\..*
 .*\.sqlite
+/settings_local.py$
