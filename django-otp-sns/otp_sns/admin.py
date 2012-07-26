@@ -14,7 +14,7 @@ class SNSDeviceAdmin(admin.ModelAdmin):
             'fields': ['user', 'name', 'confirmed'],
         }),
         ('Configuration', {
-            'fields': ['topic', 'region', 'message', 'key'],
+            'fields': ['topic', 'message', 'key'],
         }),
     ]
 

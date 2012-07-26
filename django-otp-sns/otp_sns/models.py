@@ -44,11 +44,6 @@ class SNSDevice(Device):
         help_text="The ARN of the SNS topic to post to."
     )
 
-    region = models.CharField(max_length=32,
-        default=settings.OTP_SNS_DEFAULT_REGION,
-        help_text="The AWS region that the topic is in."
-    )
-
     message = models.CharField(max_length=64,
         default=settings.OTP_SNS_DEFAULT_MESSAGE,
         help_text="The message to present the user after sending the token."
@@ -86,16 +81,18 @@ class SNSDevice(Device):
             return token
 
         try:
-            connection = sns.connect_to_region(self.region,
+            region = self.topic.split(':')[3]
+
+            connection = sns.connect_to_region(region,
                 aws_access_key_id=settings.OTP_SNS_AWS_ID,
                 aws_secret_access_key=settings.OTP_SNS_AWS_KEY
             )
 
-            result = connection.publish(self.topic, token)
+            result = connection.publish(self.topic, '{0:06}'.format(token))
             result['PublishResponse']['PublishResult']['MessageId']
         except StandardError as e:
             logger.error('Error posting SNS token: {0}'.format(e))
-            raise StandardError('Unknown error sending the token')
+            raise StandardError('Failed to send the token')
 
         return self.message
 

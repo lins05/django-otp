@@ -11,6 +11,7 @@ setup(
     author='Peter Sagerson',
     author_email='psagersDjwublJf@ignorare.net',
     packages=[
+        'otp_sns',
     ],
     url='https://bitbucket.org/psagers/django-otp',
     license='BSD',
