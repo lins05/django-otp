@@ -10,7 +10,6 @@ class Settings(object):
     defaults = {
         'OTP_SNS_AWS_ID': None,
         'OTP_SNS_AWS_KEY': None,
-        'OTP_SNS_DEFAULT_REGION': 'us-east-1',
         'OTP_SNS_DEFAULT_MESSAGE': 'Sent',
     }
 

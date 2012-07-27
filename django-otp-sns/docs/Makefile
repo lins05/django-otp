@@ -151,3 +151,7 @@ doctest:
 	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
 	@echo "Testing of doctests in the sources finished, look at the " \
 	      "results in $(BUILDDIR)/doctest/output.txt."
+
+zip:
+	rm build/html.zip || true
+	cd build/html && zip -R ../html.zip '*' -x .buildinfo -x '_sources/*'

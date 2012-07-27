@@ -28,7 +28,9 @@ sys.path.insert(0, os.path.abspath('../../../django-otp/docs/ext'))
 extensions = [
     'sphinx.ext.autodoc',
     'sphinx.ext.intersphinx',
-    'sphinx.ext.viewcode'
+    'sphinx.ext.viewcode',
+
+    'otpdocs',
 ]
 
 # autodoc and viewcode need valid settings in order to process Django modules.
@@ -43,8 +45,10 @@ django.conf.settings.configure(
 )
 
 intersphinx_mapping = {
-    'http://docs.python.org/': None,
-    'http://packages.python.org/django-otp': None,
+    'python': ('http://docs.python.org/', None),
+    'django': ('http://docs.djangoproject.com/en/dev/',
+               'http://docs.djangoproject.com/en/dev/_objects/'),
+    'django-otp': ('http://packages.python.org/django-otp', None),
 }
 
 # Add any paths that contain templates here, relative to this directory.
@@ -260,7 +264,3 @@ texinfo_documents = [
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
-
-
-# Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'http://docs.python.org/': None}

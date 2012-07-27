@@ -1,5 +1,4 @@
 from binascii import unhexlify
-from functools import partial
 import logging
 
 from boto import sns
@@ -17,28 +16,27 @@ logger = logging.getLogger(__name__)
 
 class SNSDevice(Device):
     """
-    A device that delivers codes to an AWS SNS topic. The primary application
-    of this is expected to be SMS delivery, although there's no such limitation
-    in the code.
-
-    Creating SNS topics and adding subscriptions is an exercise left to the
-    client. This device only posts and verifies.
+    A :class:`~django_otp.models.Device` that delivers codes to an AWS SNS
+    topic. The primary application of this is expected to be SMS delivery,
+    although this device doesn't care who is subscribed to the topic. Creating
+    SNS topics and adding subscriptions is an exercise left to the client; this
+    device only posts and verifies.
 
     This uses TOTP to generate temporary tokens. We use the default 30 second
     time step and allow a one step grace period.
 
     .. attribute:: topic
 
-        The ARN of the SNS topic to post to.
+        *CharField*: The ARN of the SNS topic to post to.
 
     .. attribute:: message
 
-        The message to show the user after posting a token. (Default:
-        settings.OTP_SNS_DEFAULT_MESSAGE)
+        *CharField*: The message to show the user after posting a token.
+        (Default: ``settings.OTP_SNS_DEFAULT_MESSAGE``)
 
     .. attribute:: key
 
-        The secret key used to generate TOTP tokens.
+        *CharField*: The secret key used to generate TOTP tokens.
     """
     topic = models.CharField(max_length=256,
         help_text="The ARN of the SNS topic to post to."
@@ -67,14 +65,12 @@ class SNSDevice(Device):
 
     def generate_challenge(self):
         """
-        Generates a random token and publishes it to
-        :attr:`~otp_sns.models.SNSDevice.topic`. The token will only be valid
-        for a limited time. If there's an error, we'll log it and raise a
-        StandardError.
+        Publishes the current TOTP token to ``self.topic``.
 
-        :returns: :attr:`~otp_sns.models.SNSDevice.message` on success.
+        :returns: ``self.message`` on success.
+        :raises: StandardError if delivery fails.
         """
-        token = totp(self.bin_key)
+        token = '{0:06}'.format(totp(self.bin_key))
 
         # Special topic for test cases
         if self.topic == 'test':
@@ -88,7 +84,7 @@ class SNSDevice(Device):
                 aws_secret_access_key=settings.OTP_SNS_AWS_KEY
             )
 
-            result = connection.publish(self.topic, '{0:06}'.format(token))
+            result = connection.publish(self.topic, token)
             result['PublishResponse']['PublishResult']['MessageId']
         except StandardError as e:
             logger.error('Error posting SNS token: {0}'.format(e))
