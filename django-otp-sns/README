@@ -1,9 +1,0 @@
-.. vim:ft=rst
-
-This is a django-otp plugin that delivers tokens via Amazon's `SNS
-<http://aws.amazon.com/sns/>`_. The expectation is that it will be used to
-implement SMS-based two-factor authentication, although it's not strictly
-limited to that.
-
-See `django-otp <http://packages.python.org/django-otp>`_ for more information
-on the OTP framework.

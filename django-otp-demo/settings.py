@@ -121,7 +121,7 @@ INSTALLED_APPS = [
 
     'django_otp',
     'otp_yubikey',
-    'otp_sns',
+    'otp_twilio',
     'django_otp.plugins.otp_totp',
     'django_otp.plugins.otp_hotp',
     'django_otp.plugins.otp_email',

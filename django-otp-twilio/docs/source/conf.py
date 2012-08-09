@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 #
-# django-otp-sns documentation build configuration file, created by
+# django-otp-twilio documentation build configuration file, created by
 # sphinx-quickstart on Wed Jul 25 13:46:24 2012.
 #
 # This file is execfile()d with the current directory set to its containing dir.
@@ -39,7 +39,7 @@ django.conf.settings.configure(
     DATABASES={
         'default': {
             'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': '/tmp/django_otp.sqlite',
+            #'NAME': '/tmp/django_otp.sqlite',
         }
     }
 )
@@ -64,7 +64,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'django-otp-sns'
+project = u'django-otp-twilio'
 copyright = u'2012, Peter Sagerson'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -188,7 +188,7 @@ html_static_path = ['_static']
 #html_file_suffix = None
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'django-otp-snsdoc'
+htmlhelp_basename = 'django-otp-twiliodoc'
 
 
 # -- Options for LaTeX output --------------------------------------------------
@@ -207,7 +207,7 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'django-otp-sns.tex', u'django-otp-sns Documentation',
+  ('index', 'django-otp-twilio.tex', u'django-otp-twilio Documentation',
    u'Peter Sagerson', 'manual'),
 ]
 
@@ -237,7 +237,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'django-otp-sns', u'django-otp-sns Documentation',
+    ('index', 'django-otp-twilio', u'django-otp-twilio Documentation',
      [u'Peter Sagerson'], 1)
 ]
 
@@ -251,8 +251,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-  ('index', 'django-otp-sns', u'django-otp-sns Documentation',
-   u'Peter Sagerson', 'django-otp-sns', 'One line description of project.',
+  ('index', 'django-otp-twilio', u'django-otp-twilio Documentation',
+   u'Peter Sagerson', 'django-otp-twilio', 'One line description of project.',
    'Miscellaneous'),
 ]
 

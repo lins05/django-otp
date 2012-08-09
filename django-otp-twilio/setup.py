@@ -4,20 +4,20 @@ from distutils.core import setup
 
 
 setup(
-    name='django-otp-sns',
+    name='django-otp-twilio',
     version='0.1.0',
-    description="A django-otp plugin that delivers tokens via Amazon's SNS.",
+    description="A django-otp plugin that delivers tokens via Twilio's SMS service.",
     long_description=open('README').read(),
     author='Peter Sagerson',
     author_email='psagersDjwublJf@ignorare.net',
     packages=[
-        'otp_sns',
+        'otp_twilio',
     ],
     url='https://bitbucket.org/psagers/django-otp',
     license='BSD',
     install_requires=[
         'django-otp',
-        'boto',
+        'requests',
     ],
     classifiers=[
         "Development Status :: 4 - Beta",

@@ -30,18 +30,20 @@
   model: auth.user
   pk: 2
 
-- model: otp_sns.snsdevice
+- model: otp_twilio.twiliosmsdevice
   pk: 1
   fields:
     user: 1
     name: SMS
     confirmed: true
-    topic: test
+    number: test
+    key: '01234567890123456789'
 
-- model: otp_sns.snsdevice
+- model: otp_twilio.twiliosmsdevice
   pk: 2
   fields:
     user: 2
     name: SMS
     confirmed: true
-    topic: test
+    number: test
+    key: '98765432109876543210'

@@ -8,9 +8,9 @@ class Settings(object):
     if they are not specified by the configuration.
     """
     defaults = {
-        'OTP_SNS_AWS_ID': None,
-        'OTP_SNS_AWS_KEY': None,
-        'OTP_SNS_DEFAULT_MESSAGE': 'Sent',
+        'OTP_TWILIO_ACCOUNT': None,
+        'OTP_TWILIO_AUTH': None,
+        'OTP_TWILIO_FROM': None,
     }
 
     def __init__(self):

@@ -1,26 +1,26 @@
 from django.contrib import admin
 from django.contrib.admin.sites import AlreadyRegistered
 
-from .models import SNSDevice
+from .models import TwilioSMSDevice
 
 
-class SNSDeviceAdmin(admin.ModelAdmin):
+class TwilioSMSDeviceAdmin(admin.ModelAdmin):
     """
     :class:`~django.contrib.admin.ModelAdmin` for
-    :class:`~otp_sns.models.SNSDevice`.
+    :class:`~otp_twilio.models.TwilioSMSDevice`.
     """
     fieldsets = [
         ('Identity', {
             'fields': ['user', 'name', 'confirmed'],
         }),
         ('Configuration', {
-            'fields': ['topic', 'message', 'key'],
+            'fields': ['number', 'key'],
         }),
     ]
 
 
 try:
-    admin.site.register(SNSDevice, SNSDeviceAdmin)
+    admin.site.register(TwilioSMSDevice, TwilioSMSDeviceAdmin)
 except AlreadyRegistered:
     # Ignore the useless exception from multiple imports
     pass

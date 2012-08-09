@@ -4,7 +4,7 @@
 docs/build/
 
 # vim
-\.spell\..*\.add\..*
+\.spell\..*\.add
 
 # Django
 .*\.sqlite
