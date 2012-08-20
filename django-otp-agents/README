@@ -1,0 +1,7 @@
+.. vim: ft=rst
+
+This uses `django-agent-trust <http://pypi.python.org/pypi/django-agent-trust>`_
+to add OTP-based machine authorization to django-otp.
+
+See `django-otp <http://pypi.python.org/pypi/django-otp>`_ for more information
+on the OTP framework.
