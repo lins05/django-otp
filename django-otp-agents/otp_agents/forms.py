@@ -35,7 +35,7 @@ class OTPAuthenticationForm(django_otp.forms.OTPAuthenticationForm, OTPAgentForm
     Extends :class:`~django_otp.forms.OTPAuthenticationForm` with support for
     agent trust.
     """
-    otp_trust_agent = forms.BooleanField(required=False, label="Trust this machine")
+    otp_trust_agent = forms.BooleanField(required=False, label="Trust this agent")
 
     def clean(self):
         cleaned_data = super(OTPAuthenticationForm, self).clean()
@@ -49,7 +49,7 @@ class OTPTokenForm(django_otp.forms.OTPTokenForm, OTPAgentFormMixin):
     Extends :class:`~django_otp.forms.OTPTokenForm` with support for agent
     trust.
     """
-    otp_trust_agent = forms.BooleanField(required=False, label="Trust this machine")
+    otp_trust_agent = forms.BooleanField(required=False, label="Trust this agent")
 
     def clean(self):
         cleaned_data = super(OTPTokenForm, self).clean()
