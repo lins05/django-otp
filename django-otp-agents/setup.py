@@ -4,14 +4,14 @@ from distutils.core import setup
 
 
 setup(
-    name='django-otp-twilio',
+    name='django-otp-agents',
     version='0.1.0',
-    description="A django-otp plugin that delivers tokens via Twilio's SMS service.",
+    description="Integration of django-otp and django-agent-trust.",
     long_description=open('README').read(),
     author='Peter Sagerson',
     author_email='psagersDjwublJf@ignorare.net',
     packages=[
-        'otp_twilio',
+        'otp_agents',
     ],
     url='https://bitbucket.org/psagers/django-otp',
     license='BSD',
