@@ -1,0 +1,25 @@
+- fields:
+    date_joined: 2012-07-15 16:03:02.420965
+    email: alice@example.com
+    first_name: ''
+    groups: []
+    is_active: true
+    is_staff: false
+    is_superuser: false
+    last_login: 2012-07-17 19:00:09.753345
+    last_name: ''
+    password: '6384e2b2184bcbf58eccf10ca7a6563c'
+    user_permissions: []
+    username: alice
+  model: auth.user
+  pk: 1
+
+- fields: {confirmed: true, name: Backup Codes, user: 1}
+  model: otp_static.staticdevice
+  pk: 1
+- fields: {device: 1, token: alice1}
+  model: otp_static.statictoken
+  pk: 1
+- fields: {device: 1, token: alice2}
+  model: otp_static.statictoken
+  pk: 2

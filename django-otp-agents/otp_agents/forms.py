@@ -23,7 +23,7 @@ class OTPAgentFormMixin(object):
     def clean_agent(self):
         user = self.get_user()
 
-        if (user is not None) and user.is_verified():
+        if getattr(user, 'otp_device', None) is not None:
             if self.cleaned_data.get('otp_trust_agent'):
                 user.otp_trust_this_agent = True
             else:

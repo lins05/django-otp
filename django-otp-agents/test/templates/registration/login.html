@@ -1,0 +1,9 @@
+<html>
+    <head></head>
+    <body>
+        <form action="." method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+    </body>
+</html>
