@@ -1,9 +1,0 @@
-from django.conf.urls.defaults import patterns, include, url
-
-from . import admin
-
-
-urlpatterns = patterns('',
-    url(r'^admin/', include(admin.site.urls)),
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-)

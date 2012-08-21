@@ -20,6 +20,12 @@ INSTALLED_APPS = [
     'django_otp.plugins.otp_totp',
     'django_otp.plugins.otp_static',
     'django_otp.plugins.otp_email',
+
+    'otp_yubikey',
+    'otp_twilio',
+
+    'django_agent_trust',
+    'otp_agents',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -27,6 +33,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django_otp.middleware.OTPMiddleware',
+    'django_agent_trust.middleware.AgentMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 ]
 
