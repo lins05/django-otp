@@ -1,5 +1,7 @@
 include CHANGES LICENSE README
 
+recursive-include otp_agents/fixtures *
+
 recursive-include docs *.rst *.py Makefile
 prune docs/build
 
