@@ -47,7 +47,7 @@ To get around this, the following decorator effectively merges
 :func:`~django_agent_trust.decorators.trusted_agent_required` into a single
 decorator that will be satisfied with either a verified user or a trusted agent.
 The default behavior is to act exactly like
-:func:`~django_otp.decorators.otp_required`; Pass ``accept_trusted_agent=True``
+:func:`~django_otp.decorators.otp_required`; pass ``accept_trusted_agent=True``
 to enable the more lenient policy.
 
 .. automodule:: otp_agents.decorators
