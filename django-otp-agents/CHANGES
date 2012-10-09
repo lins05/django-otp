@@ -1,6 +1,12 @@
 .. vim: ft=rst nospell tw=80
 
 
+v0.1.1 - October 8, 2012 - Django < 1.4
+---------------------------------------
+
+As a convenience, all unit tests are skipped in Django < 1.4.
+
+
 v0.1.0 - August 20, 2012 - Initial Release
 ------------------------------------------
 

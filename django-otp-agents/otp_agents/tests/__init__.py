@@ -1,8 +1,11 @@
-from django.contrib.auth.models import User
+from unittest import skipIf
 
+import django
+from django.contrib.auth.models import User
 from django.test import TestCase
 
 
+@skipIf(django.VERSION < (1,4), 'Requires Django 1.4')
 class OTPAgentsTestCase(TestCase):
     fixtures = ['test/alice.yaml']
     urls = 'otp_agents.tests.urls'
