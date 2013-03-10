@@ -1,11 +1,14 @@
-from unittest import skipIf
+try:
+    from unittest import skipIf
+except ImportError:
+    skipIf = lambda *args, **kwargs: (lambda v: v)
 
 import django
 from django.contrib.auth.models import User
 from django.test import TestCase
 
 
-@skipIf(django.VERSION < (1,4), 'Requires Django 1.4')
+@skipIf(django.VERSION < (1, 4), 'Requires Django 1.4')
 class OTPAgentsTestCase(TestCase):
     fixtures = ['test/alice.yaml']
     urls = 'otp_agents.tests.urls'
@@ -82,7 +85,6 @@ class OTPAgentsTestCase(TestCase):
         response = self.client.get('/agent/')
 
         self.assertEquals(response.status_code, 200)
-
 
     def login(self):
         params = {

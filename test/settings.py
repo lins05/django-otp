@@ -1,9 +1,9 @@
-# django-agent-trust test project
-
 from os.path import dirname, join, abspath
+
 
 def project_path(path):
     return abspath(join(dirname(__file__), path))
+
 
 DEBUG = True
 
