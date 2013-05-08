@@ -1,6 +1,7 @@
 # setuptools
 /MANIFEST$
 /MANIFEST.in$
+/build/
 /dist/
 /docs/build/
 \.egg-info/
