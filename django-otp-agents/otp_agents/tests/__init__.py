@@ -1,20 +1,29 @@
-try:
-    from unittest import skipIf
-except ImportError:
-    skipIf = lambda *args, **kwargs: (lambda v: v)
-
 import django
-from django.contrib.auth.models import User
-from django.test import TestCase
+from django.db import IntegrityError
+from django.db.models import get_app
+from django.utils.unittest import skipIf
+
+from django_otp.tests import TestCase
 
 
-@skipIf(django.VERSION < (1, 4), 'Requires Django 1.4')
+@skipIf(django.VERSION < (1, 4), u"Requires Django 1.4")
 class OTPAgentsTestCase(TestCase):
-    fixtures = ['test/alice.yaml']
     urls = 'otp_agents.tests.urls'
 
     def setUp(self):
-        self.alice = User.objects.get()
+        try:
+            get_app('otp_static')
+        except:
+            self.skipTest(u"Requires django_otp.plugins.otp_static")
+
+        try:
+            self.alice = self.create_user('alice', 'alice')
+        except IntegrityError:
+            self.skipTest(u"Unable to create a test user")
+        else:
+            device = self.alice.staticdevice_set.create()
+            device.token_set.create(token='alice1')
+            device.token_set.create(token='alice2')
 
     def test_otp_anonymous(self):
         response = self.client.get('/otp/')

@@ -1,0 +1,7 @@
+This folder contains Django projects that are set up specifically for testing
+the django-otp (and related) apps. Some dependencies are expected to be checked
+out in the same directory as django-otp; one or two others will need to be
+installed.
+
+default_user should pass tests in Django 1.3 and 1.4. custom_user should pass
+tests in 1.5+. exotic_user should skip most tests in 1.5+.
