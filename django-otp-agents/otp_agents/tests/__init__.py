@@ -30,7 +30,7 @@ class OTPAgentsTestCase(TestCase):
 
         self.assertEquals(response.status_code, 302)
 
-    def test_otp_aythenticated(self):
+    def test_otp_authenticated(self):
         self.login()
         response = self.client.get('/otp/')
 
@@ -53,6 +53,30 @@ class OTPAgentsTestCase(TestCase):
     def test_otp2_verified(self):
         self.verify()
         response = self.client.get('/otp2/')
+
+        self.assertEquals(response.status_code, 200)
+
+    def test_otp_advised_anonymous(self):
+        response = self.client.get('/otp_advised/')
+
+        self.assertEquals(response.status_code, 302)
+
+    def test_otp_advised_unconfigured(self):
+        self.alice.staticdevice_set.all().delete()
+        self.login()
+        response = self.client.get('/otp_advised/')
+
+        self.assertEquals(response.status_code, 200)
+
+    def test_otp_advised_authenticated(self):
+        self.login()
+        response = self.client.get('/otp_advised/')
+
+        self.assertEquals(response.status_code, 302)
+
+    def test_otp_advised_verified(self):
+        self.verify()
+        response = self.client.get('/otp_advised/')
 
         self.assertEquals(response.status_code, 200)
 

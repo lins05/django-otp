@@ -4,7 +4,7 @@ from django_otp.decorators import otp_required as real_otp_required
 from django_agent_trust.decorators import trusted_agent_required
 
 
-def otp_required(view=None, redirect_field_name='next', login_url=None, accept_trusted_agent=False):
+def otp_required(view=None, redirect_field_name='next', login_url=None, if_configured=False, accept_trusted_agent=False):
     """
     Similar to :func:`~django_otp.decorators.otp_required`, but with an extra
     argument.
@@ -20,7 +20,7 @@ def otp_required(view=None, redirect_field_name='next', login_url=None, accept_t
             elif accept_trusted_agent:
                 x_required = trusted_agent_required(redirect_field_name=redirect_field_name, login_url=login_url)
             else:
-                x_required = real_otp_required(redirect_field_name=redirect_field_name, login_url=login_url)
+                x_required = real_otp_required(redirect_field_name=redirect_field_name, login_url=login_url, if_configured=if_configured)
 
             return x_required(view_func)(request, *args, **kwargs)
 
