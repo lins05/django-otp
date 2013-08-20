@@ -68,6 +68,13 @@ class OTPAgentsTestCase(TestCase):
 
         self.assertEquals(response.status_code, 200)
 
+    def test_otp_advised_unconfigured_2(self):
+        self.alice.staticdevice_set.all().delete()
+        self.login()
+        response = self.client.get('/otp_advised_2/')
+
+        self.assertEquals(response.status_code, 200)
+
     def test_otp_advised_authenticated(self):
         self.login()
         response = self.client.get('/otp_advised/')

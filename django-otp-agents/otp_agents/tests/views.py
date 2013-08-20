@@ -13,8 +13,13 @@ def otp_view_2(request):
     return HttpResponse()
 
 
-@otp_required(if_configured=True)
+@otp_required(if_configured=True, accept_trusted_agent=True)
 def otp_advised_view(request):
+    return HttpResponse()
+
+
+@otp_required(if_configured=True)
+def otp_advised_view_2(request):
     return HttpResponse()
 
 

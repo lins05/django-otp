@@ -1,3 +1,11 @@
+v0.1.4 -- August 20, 2013 - Fix in otp_required
+-----------------------------------------------
+
+- :func:`~otp_agents.decorators.otp_required` no longer ignores
+  ``if_configured`` when ``accept_trusted_agent`` is ``True``. The default
+  behavior for ``login_url`` is also now more explicit.
+
+
 v0.1.3 -- July 3, 2013 - Decorator improvement
 -----------------------------------------------
 
@@ -8,7 +16,7 @@ v0.1.2 - May 9, 2013 - Unit test improvements
 ---------------------------------------------
 
 - Major unit test cleanup. Tests should pass or be skipped under all supported
-  versions of Django, with or without custom users and timzeone support.
+  versions of Django, with or without custom users and timezone support.
 
 
 v0.1.1 - October 8, 2012 - Django < 1.4
