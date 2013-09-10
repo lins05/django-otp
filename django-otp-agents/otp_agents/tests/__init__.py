@@ -14,12 +14,12 @@ class OTPAgentsTestCase(TestCase):
         try:
             get_app('otp_static')
         except:
-            self.skipTest(u"Requires django_otp.plugins.otp_static")
+            self.skipTest("Requires django_otp.plugins.otp_static")
 
         try:
             self.alice = self.create_user('alice', 'alice')
         except IntegrityError:
-            self.skipTest(u"Unable to create a test user")
+            self.skipTest("Unable to create a test user")
         else:
             device = self.alice.staticdevice_set.create()
             device.token_set.create(token='alice1')
@@ -28,19 +28,19 @@ class OTPAgentsTestCase(TestCase):
     def test_otp_anonymous(self):
         response = self.client.get('/otp/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_otp_authenticated(self):
         self.login()
         response = self.client.get('/otp/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_otp_verified(self):
         self.verify()
         response = self.client.get('/otp/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_otp_trusted(self):
         self.trust(True)
@@ -48,66 +48,66 @@ class OTPAgentsTestCase(TestCase):
         self.login()
         response = self.client.get('/otp/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_otp2_verified(self):
         self.verify()
         response = self.client.get('/otp2/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_otp_advised_anonymous(self):
         response = self.client.get('/otp_advised/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_otp_advised_unconfigured(self):
         self.alice.staticdevice_set.all().delete()
         self.login()
         response = self.client.get('/otp_advised/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_otp_advised_unconfigured_2(self):
         self.alice.staticdevice_set.all().delete()
         self.login()
         response = self.client.get('/otp_advised_2/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_otp_advised_authenticated(self):
         self.login()
         response = self.client.get('/otp_advised/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_otp_advised_verified(self):
         self.verify()
         response = self.client.get('/otp_advised/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_agent_anonymous(self):
         response = self.client.get('/agent/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_agent_authenticated(self):
         response = self.client.get('/agent/')
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def test_agent_verified(self):
         self.verify()
         response = self.client.get('/agent/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_agent_trusted_session(self):
         self.trust(False)
         response = self.client.get('/agent/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_agent_trusted(self):
         self.trust(True)
@@ -115,7 +115,7 @@ class OTPAgentsTestCase(TestCase):
         self.login()
         response = self.client.get('/agent/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def test_two_step_trust(self):
         self.login()
@@ -124,7 +124,7 @@ class OTPAgentsTestCase(TestCase):
         self.login()
         response = self.client.get('/agent/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)
 
     def login(self):
         params = {
@@ -134,7 +134,7 @@ class OTPAgentsTestCase(TestCase):
 
         response = self.client.post('/login/', params)
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def verify(self):
         params = {
@@ -145,7 +145,7 @@ class OTPAgentsTestCase(TestCase):
 
         response = self.client.post('/verify/', params)
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def trust(self, persist=False):
         params = {
@@ -157,7 +157,7 @@ class OTPAgentsTestCase(TestCase):
 
         response = self.client.post('/trust/', params)
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def add_trust(self, persist=False):
         params = {
@@ -168,9 +168,9 @@ class OTPAgentsTestCase(TestCase):
 
         response = self.client.post('/trust/', params)
 
-        self.assertEquals(response.status_code, 302)
+        self.assertEqual(response.status_code, 302)
 
     def logout(self):
         response = self.client.post('/logout/')
 
-        self.assertEquals(response.status_code, 200)
+        self.assertEqual(response.status_code, 200)

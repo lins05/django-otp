@@ -3,7 +3,9 @@ from django.conf.urls import patterns, url
 from . import views
 
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
+
     url(r'^login/$', 'django.contrib.auth.views.login'),
     url(r'^verify/$', 'django_otp.views.login'),
     url(r'^trust/$', 'otp_agents.views.login'),
