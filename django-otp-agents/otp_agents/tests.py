@@ -6,9 +6,9 @@ from django.utils.unittest import skipIf
 from django_otp.tests import TestCase
 
 
-@skipIf(django.VERSION < (1, 4), u"Requires Django 1.4")
+@skipIf(django.VERSION < (1, 4), "Requires Django 1.4")
 class OTPAgentsTestCase(TestCase):
-    urls = 'otp_agents.tests.urls'
+    urls = 'otp_agents.test.urls'
 
     def setUp(self):
         try:
