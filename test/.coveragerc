@@ -1,0 +1,7 @@
+[run]
+data_file = ../../.coverage
+
+source = django_otp
+         otp_agents
+         otp_twilio
+         otp_yubikey
