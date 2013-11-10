@@ -5,3 +5,5 @@ to add OTP-based machine authorization to django-otp.
 
 See `django-otp <http://pypi.python.org/pypi/django-otp>`_ for more information
 on the OTP framework.
+
+This version is supported on Python 2.6, 2.7, 3.2, and 3.3; and Django >= 1.4.
