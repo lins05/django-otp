@@ -1,3 +1,5 @@
+import pickle
+
 from django.http import HttpResponse
 
 from otp_agents.decorators import otp_required
@@ -10,6 +12,14 @@ def otp_view(request):
 
 @otp_required()
 def otp_view_2(request):
+    return HttpResponse()
+
+
+@otp_required()
+def pickle_view(request):
+    """ Make sure the middleware didn't break pickling. """
+    pickle.dumps(request.user, pickle.HIGHEST_PROTOCOL)
+
     return HttpResponse()
 
 

@@ -126,6 +126,14 @@ class OTPAgentsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
+    def test_pickle(self):
+        self.verify()
+        self.client.get('/pickle/')
+
+    #
+    # Helpers
+    #
+
     def login(self):
         params = {
             'username': 'alice',
