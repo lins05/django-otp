@@ -1,4 +1,4 @@
-include CHANGES LICENSE README
+include CHANGES LICENSE README.rst
 
 recursive-include otp_agents/fixtures *
 

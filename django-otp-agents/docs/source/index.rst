@@ -1,7 +1,7 @@
 django-otp-agents
 =================
 
-.. include:: ../../README
+.. include:: ../../README.rst
 
 
 Installation

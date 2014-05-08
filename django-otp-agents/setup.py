@@ -7,7 +7,7 @@ setup(
     name='django-otp-agents',
     version='0.2.0',
     description="Integration of django-otp and django-agent-trust.",
-    long_description=open('README').read(),
+    long_description=open('README.rst').read(),
     author='Peter Sagerson',
     author_email='psagersDjwublJf@ignorare.net',
     zip_safe=False,
