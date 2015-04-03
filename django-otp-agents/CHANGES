@@ -1,3 +1,11 @@
+v0.2.1 - April 3, 2015 - Django 1.8
+-----------------------------------
+
+- Add support for the new app registry, when available.
+
+- Add Django 1.8 to the test matrix and fix a few test bugs.
+
+
 v0.2.0 - November 10, 2013 - Django 1.6
 ---------------------------------------
 
