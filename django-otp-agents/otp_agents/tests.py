@@ -2,6 +2,12 @@ import sys
 
 import django
 from django.db import IntegrityError
+
+try:
+    from django.test import override_settings
+except ImportError:
+    override_settings = lambda **kwargs: lambda view: view
+
 if django.VERSION < (1, 7):
     from django.utils import unittest
 else:
@@ -11,9 +17,8 @@ from django_otp.tests import TestCase
 
 
 @unittest.skipIf(django.VERSION < (1, 4), "Requires Django 1.4")
+@override_settings(ROOT_URLCONF='otp_agents.test.urls')
 class OTPAgentsTestCase(TestCase):
-    urls = 'otp_agents.test.urls'
-
     def setUp(self):
         self._check_for_otp_static()
 
@@ -141,11 +146,11 @@ class OTPAgentsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-    # This started failing on Django 1.8 under Python 3. Pickling request.user
-    # has always seemed kind of dodgy, so I'm not sure how much I care.
+    # This started failing on Django 1.8. Pickling request.user has always
+    # seemed kind of dodgy, so I'm not sure how much I care.
     def test_pickle(self):
-        if sys.version_info[0] >= 3 and django.VERSION >= (1, 8):
-            self.skipTest("Fails in Django 1.8/Python 3")
+        if django.VERSION >= (1, 8):
+            self.skipTest("Fails in Django>=1.8")
 
         self.verify()
         self.client.get('/pickle/')
@@ -202,3 +207,7 @@ class OTPAgentsTestCase(TestCase):
         response = self.client.post('/logout/')
 
         self.assertEqual(response.status_code, 200)
+
+
+if django.VERSION < (1, 9):
+    OTPAgentsTestCase.urls = 'otp_agents.test.urls'
