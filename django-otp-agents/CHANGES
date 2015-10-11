@@ -1,3 +1,11 @@
+v0.2.2 - October 11, 2015 - Django 1.8
+--------------------------------------
+
+- Stop importing models into the root of the package.
+
+- General cleanup and compatibility with Django 1.9a1.
+
+
 v0.2.1 - April 3, 2015 - Django 1.8
 -----------------------------------
 

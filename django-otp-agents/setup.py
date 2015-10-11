@@ -5,7 +5,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-otp-agents',
-    version='0.2.1',
+    version='0.2.2',
     description="Integration of django-otp and django-agent-trust.",
     long_description=open('README.rst').read(),
     author='Peter Sagerson',
@@ -27,6 +27,7 @@ setup(
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.3",
         "Programming Language :: Python :: 3.4",
+        "Programming Language :: Python :: 3.5",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: BSD License",
         "Topic :: Security",
