@@ -1,3 +1,10 @@
+v0.2.3 - November 16, 2015 - admin
+----------------------------------
+
+- Added :class:`~otp_agents.admin.TrustedAgentAdminSite`, which is an admin site
+  that accepts either a verified user or a trusted agent.
+
+
 v0.2.2 - October 11, 2015 - Django 1.8
 --------------------------------------
 
