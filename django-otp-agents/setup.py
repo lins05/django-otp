@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 
 setup(
@@ -11,7 +11,10 @@ setup(
     author='Peter Sagerson',
     author_email='psagersDjwublJf@ignorare.net',
     zip_safe=False,
-    packages=find_packages(),
+    packages=[
+        'otp_agents',
+        'otp_agents.test',
+    ],
     include_package_data=True,
     url='https://bitbucket.org/psagers/django-otp',
     license='BSD',

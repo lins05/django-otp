@@ -54,6 +54,13 @@ to enable the more lenient policy.
     :members:
 
 
+Admin
+-----
+
+.. automodule:: otp_agents.admin
+    :members:
+
+
 Changes
 -------
 

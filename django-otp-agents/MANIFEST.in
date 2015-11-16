@@ -1,8 +1,4 @@
 include CHANGES LICENSE README.rst
 
-recursive-include otp_agents/fixtures *
-
 recursive-include docs *.rst *.py Makefile
 prune docs/build
-
-global-exclude *.pyc *.pyo .*.sw?
