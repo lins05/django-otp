@@ -3,3 +3,5 @@ omit = */tests.py
        */tests/*
        */admin.py
        */management/*
+       */migrations/*
+       */south_migrations/*
