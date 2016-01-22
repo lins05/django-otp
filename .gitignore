@@ -1,0 +1,17 @@
+# setuptools
+/MANIFEST$
+/MANIFEST.in$
+/build/
+/dist/
+/docs/build/
+\.egg-info/
+
+# vim
+\.spell\..*\.add
+
+# Django
+.*\.sqlite
+/settings_local.py$
+
+.hg/
+.hgtags
