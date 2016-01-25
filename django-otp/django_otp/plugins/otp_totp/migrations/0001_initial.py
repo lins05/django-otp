@@ -4,13 +4,14 @@ from __future__ import unicode_literals
 from django.db import models, migrations
 import django_otp.plugins.otp_totp.models
 from django.conf import settings
+from seahub.base.fields import LowerCaseCharField
 
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    # dependencies = [
+    #     migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    # ]
 
     operations = [
         migrations.CreateModel(
@@ -26,7 +27,8 @@ class Migration(migrations.Migration):
                 ('tolerance', models.PositiveSmallIntegerField(default=1, help_text='The number of time steps in the past or future to allow.')),
                 ('drift', models.SmallIntegerField(default=0, help_text='The number of time steps the prover is known to deviate from our clock.')),
                 ('last_t', models.BigIntegerField(default=-1, help_text='The t value of the latest verified token. The next token must be at a higher time step.')),
-                ('user', models.ForeignKey(help_text='The user that this device belongs to.', to=settings.AUTH_USER_MODEL)),
+                # ('user', models.ForeignKey(help_text='The user that this device belongs to.', to=settings.AUTH_USER_MODEL)),
+                ('user', LowerCaseCharField(max_length=255, help_text="The user that this device belongs to.")),
             ],
             options={
                 'abstract': False,

@@ -1,6 +1,6 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
-from django.contrib.auth.decorators import user_passes_test
+from seahub.auth.decorators import user_passes_test
 
 from django_otp import user_has_device
 from django_otp.conf import settings

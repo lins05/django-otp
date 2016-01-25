@@ -1,9 +1,9 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 try:
-    from django.contrib.auth import get_user_model
+    from seahub.auth import get_user_model
 except ImportError:
-    from django.contrib.auth.models import User
+    from seahub.auth.models import User
     get_user_model = lambda: User
 
 from .models import StaticDevice, StaticToken

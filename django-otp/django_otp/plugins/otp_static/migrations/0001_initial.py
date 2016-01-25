@@ -3,13 +3,14 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 from django.conf import settings
+from seahub.base.fields import LowerCaseCharField
 
 
 class Migration(migrations.Migration):
 
-    dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
-    ]
+    # dependencies = [
+    #     migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    # ]
 
     operations = [
         migrations.CreateModel(
@@ -18,7 +19,8 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('name', models.CharField(help_text='The human-readable name of this device.', max_length=64)),
                 ('confirmed', models.BooleanField(default=True, help_text='Is this device ready for use?')),
-                ('user', models.ForeignKey(help_text='The user that this device belongs to.', to=settings.AUTH_USER_MODEL)),
+                # ('user', models.ForeignKey(help_text='The user that this device belongs to.', to=settings.AUTH_USER_MODEL)),
+                ('user', LowerCaseCharField(max_length=255, help_text="The user that this device belongs to.")),
             ],
             options={
                 'abstract': False,

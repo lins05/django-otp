@@ -4,6 +4,7 @@ from django.conf import settings
 from django.core.exceptions import ObjectDoesNotExist
 from django.db import models
 from django.utils import six
+from seahub.base.fields import LowerCaseCharField
 
 
 class DeviceManager(models.Manager):
@@ -67,7 +68,8 @@ class Device(models.Model):
 
         A :class:`~django_otp.models.DeviceManager`.
     """
-    user = models.ForeignKey(getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), help_text="The user that this device belongs to.")
+    # user = models.ForeignKey(getattr(settings, 'AUTH_USER_MODEL', 'auth.User'), help_text="The user that this device belongs to.")
+    user = LowerCaseCharField(max_length=255, help_text="The user that this device belongs to.")
     name = models.CharField(max_length=64, help_text="The human-readable name of this device.")
     confirmed = models.BooleanField(default=True, help_text="Is this device ready for use?")
 

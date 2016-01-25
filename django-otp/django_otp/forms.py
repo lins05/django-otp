@@ -2,7 +2,7 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.forms import AuthenticationForm
+from seahub.auth.forms import AuthenticationForm
 
 from . import match_token, devices_for_user
 from .models import Device
@@ -11,7 +11,7 @@ from .models import Device
 class OTPAuthenticationFormMixin(object):
     """
     Shared functionality for
-    :class:`~django.contrib.auth.forms.AuthenticationForm` subclasses that wish
+    :class:`~seahub.auth.forms.AuthenticationForm` subclasses that wish
     to handle OTP tokens. Subclasses must do the following in order to use
     this:
 
@@ -49,7 +49,7 @@ class OTPAuthenticationFormMixin(object):
 
         :param user: A user that has been authenticated by the first factor
             (such as a password).
-        :type user: :class:`~django.contrib.auth.models.User`
+        :type user: :class:`~seahub.auth.models.User`
         :rasies: :exc:`~django.core.exceptions.ValidationError` if the user is
             not fully authenticated by an OTP token.
         """
@@ -132,9 +132,9 @@ class OTPAuthenticationForm(AuthenticationForm, OTPAuthenticationFormMixin):
     have an OTP-optional mode. The form has four fields:
 
         #. ``username`` is inherited from
-           :class:`~django.contrib.auth.forms.AuthenticationForm`.
+           :class:`~seahub.auth.forms.AuthenticationForm`.
         #. ``password`` is inherited from
-           :class:`~django.contrib.auth.forms.AuthenticationForm`.
+           :class:`~seahub.auth.forms.AuthenticationForm`.
         #. ``otp_device`` uses a :class:`~django.forms.Select` to allow the user
            to choose one of their registered devices. It will be empty as long
            as ``form.get_user()`` is ``None`` and should generally be omitted
@@ -152,7 +152,7 @@ class OTPAuthenticationForm(AuthenticationForm, OTPAuthenticationFormMixin):
 
         - Initially the ``username``, ``password``, and ``otp_token`` fields
           should be visible. Validation of ``username`` and ``password`` is the
-          same as for :class:`~django.contrib.auth.forms.AuthenticationForm`.
+          same as for :class:`~seahub.auth.forms.AuthenticationForm`.
           If we are able to authenticate the user based on username and password,
           then one of two things happens:
 
@@ -167,7 +167,7 @@ class OTPAuthenticationForm(AuthenticationForm, OTPAuthenticationFormMixin):
 
         - In either case, as long as the user is authenticated by their
           password, ``form.get_user()`` will return the authenticated
-          :class:`~django.contrib.auth.models.User` object. From here on, this
+          :class:`~seahub.auth.models.User` object. From here on, this
           documentation assumes that username/password authentication succeeds
           on all subsequent submissions. If validation was not successful, then
           the form will be displayed again and this time the template should be
@@ -204,13 +204,13 @@ class OTPTokenForm(forms.Form, OTPAuthenticationFormMixin):
     A form that verifies an authenticated user. It looks very much like
     :class:`~django_otp.forms.OTPAuthenticationForm`, but without the username
     and password. The first argument must be an authenticated user; you can use
-    this in place of :class:`~django.contrib.auth.forms.AuthenticationForm` by
+    this in place of :class:`~seahub.auth.forms.AuthenticationForm` by
     currying it::
 
         from functools import partial
 
-        from django.contrib.auth.decoratorrs import login_required
-        from django.contrib.auth.views import login
+        from seahub.auth.decoratorrs import login_required
+        from seahub.auth.views import login
 
 
         @login_required
@@ -226,7 +226,7 @@ class OTPTokenForm(forms.Form, OTPAuthenticationFormMixin):
     compatible template (leaving out the username and password, of course).
 
     :param user: An authenticated user.
-    :type user: :class:`~django.contrib.auth.models.User`
+    :type user: :class:`~seahub.auth.models.User`
 
     :param request: The current request.
     :type request: :class:`~django.http.HttpRequest`

@@ -2,15 +2,15 @@ from __future__ import absolute_import, division, print_function, unicode_litera
 
 from functools import partial
 
-from django.contrib.auth import BACKEND_SESSION_KEY
-from django.contrib.auth.views import login as auth_login
+from seahub.auth import BACKEND_SESSION_KEY
+from seahub.auth.views import login as auth_login
 
 from .forms import OTPAuthenticationForm, OTPTokenForm
 
 
 def login(request, **kwargs):
     """
-    This is a replacement for :func:`django.contrib.auth.views.login` that
+    This is a replacement for :func:`seahub.auth.views.login` that
     requires two-factor authentication. It's slightly clever: if the user is
     already authenticated but not verified, it will only ask the user for their
     OTP token. If the user is anonymous or is already verified by an OTP
@@ -20,7 +20,7 @@ def login(request, **kwargs):
     :class:`~django_otp.forms.OTPTokenForm`. This is a good view for
     :setting:`OTP_LOGIN_URL`.
 
-    Parameters are the same as :func:`~django.contrib.auth.views.login` except
+    Parameters are the same as :func:`~seahub.auth.views.login` except
     that this view always overrides ``authentication_form``.
     """
     user = request.user
@@ -30,7 +30,7 @@ def login(request, **kwargs):
     else:
         form = partial(OTPTokenForm, user)
 
-        # A minor hack to make django.contrib.auth.login happy
+        # A minor hack to make seahub.auth.login happy
         user.backend = request.session[BACKEND_SESSION_KEY]
 
     kwargs['authentication_form'] = form

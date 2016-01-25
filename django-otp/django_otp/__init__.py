@@ -1,6 +1,6 @@
 import sys
 
-from django.contrib.auth.signals import user_logged_in
+from seahub.auth.signals import user_logged_in
 
 
 DEVICE_ID_SESSION_KEY = 'otp_device_id'
@@ -11,9 +11,9 @@ def login(request, device):
     Persist the given OTP device in the current session. The device will be
     rejected if it does not belong to ``request.user``.
 
-    This is called automatically any time :func:`django.contrib.auth.login` is
+    This is called automatically any time :func:`seahub.auth.login` is
     called with a user having an ``otp_device`` atribute. If you use Django's
-    :func:`~django.contrib.auth.views.login` view with the django-otp
+    :func:`~seahub.auth.views.login` view with the django-otp
     authentication forms, then you won't need to call this.
 
     :param request: The HTTP request
@@ -47,7 +47,7 @@ def match_token(user, token):
     tokens against specific devices.
 
     :param user: The user supplying the token.
-    :type user: :class:`~django.contrib.auth.models.User`
+    :type user: :class:`~seahub.auth.models.User`
 
     :param string token: An OTP token to verify.
 
@@ -66,7 +66,7 @@ def devices_for_user(user, confirmed=True):
     Returns an empty iterable for anonymous users.
 
     :param user: standard or custom user object.
-    :type user: :class:`~django.contrib.auth.models.User`
+    :type user: :class:`~seahub.auth.models.User`
 
     :param confirmed: If ``None``, all matching devices are returned.
         Otherwise, this can be any true or false value to limit the query
@@ -89,7 +89,7 @@ def user_has_device(user, confirmed=True):
     Returns ``False`` for anonymous users.
 
     :param user: standard or custom user object.
-    :type user: :class:`~django.contrib.auth.models.User`
+    :type user: :class:`~seahub.auth.models.User`
 
     :param confirmed: If ``None``, all matching devices are considered.
         Otherwise, this can be any true or false value to limit the query
